@@ -1,0 +1,4 @@
+labels: ["HA","LA"]
+cls_type: "A"
+feature_path: "../dataset/resample_wav"
+n_class: 2

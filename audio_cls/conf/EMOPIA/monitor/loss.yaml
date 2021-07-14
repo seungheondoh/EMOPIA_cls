@@ -1,0 +1,2 @@
+metric: "val_loss"
+mode: "min"

@@ -1,0 +1,2 @@
+feature_path: "../dataset/remi_midi"
+pad_idx: 338

@@ -1,0 +1,3 @@
+labels: ["HV","LV"]
+cls_type: "V"
+num_of_dim: 2

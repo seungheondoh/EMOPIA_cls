@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+# C extensions
+*.so
+predictions.pt
+# Distribution / packaging
+.Python
+env/
+dataset/magenta_midi/
+dataset/magenta_midi_test/
+dataset/matlab_feature/
+dataset/remi_key_midi/
+dataset/remi_midi/
+dataset/remi_midi_test/
+dataset/resample22050
+
+midi_cls/midi_helper/remi/corpus
+midi_cls/midi_helper/remi/scratch_remi/
+midi_cls/midi_helper/remi/scratch_remi/
+
+# PyTorch ckpt
+*.tar
+*.bin
+*.zip
+
+# Tensorboard
+events.out.tfevents.*

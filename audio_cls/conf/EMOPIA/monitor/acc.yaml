@@ -1,0 +1,2 @@
+metric: "val_acc"
+mode: "max"

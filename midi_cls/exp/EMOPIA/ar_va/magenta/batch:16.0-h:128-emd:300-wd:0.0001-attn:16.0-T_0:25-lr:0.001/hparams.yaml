@@ -1,0 +1,29 @@
+task:
+  labels:
+  - Q1
+  - Q2
+  - Q3
+  - Q4
+  cls_type: AV
+  num_of_dim: 4
+midi:
+  feature_path: ./dataset/magenta_midi
+  pad_idx: 388
+hparams:
+  dataset: EMOPIA
+  midi: magenta
+  task: ar_va
+  r: 16
+  lstm_hidden_dim: 128
+  embedding_size: 300
+  batch_size: 16
+  num_workers: 8
+  lr: 0.001
+  weight_decay: 0.0001
+  T_0: 25
+  max_epochs: 400
+  gpus: 0
+  distributed_backend: dp
+  deterministic: true
+  benchmark: false
+  reproduce: true

@@ -1,0 +1,3 @@
+feature_path: "../dataset/resample22050"
+input_length: 3
+sr: 22050
