@@ -55,7 +55,7 @@ def get_checkpoint_callback(fix_config, save_path) -> ModelCheckpoint:
         dirpath=prefix,
         filename=suffix,
         save_top_k=1,
-        save_last= False,
+        save_last= True,
         monitor=fix_config.monitor.metric,
         mode=fix_config.monitor.mode,
         save_weights_only=True,
@@ -138,27 +138,27 @@ if __name__ == "__main__":
     parser.add_argument("--dataset", default="EMOPIA", type=str)
     parser.add_argument("--task", default="ar_va", type=str)
     parser.add_argument("--wav", default="sr22k", type=str)
-    parser.add_argument("--monitor", default="loss", type=str)
+    parser.add_argument("--monitor", default="acc", type=str)
     parser.add_argument("--patience", default=5, type=int)
     # model
     parser.add_argument("--n_channels", default=128, type=int)
     parser.add_argument("--n_fft", default=1024, type=int)
     parser.add_argument("--n_mels", default=128, type=int)
     parser.add_argument("--f_min", default=0, type=int)
-    parser.add_argument("--f_max", default=8000, type=int)
+    parser.add_argument("--f_max", default=11025, type=int)
     # pipeline
-    parser.add_argument("--batch_size", default=16, type=int)
+    parser.add_argument("--batch_size", default=32, type=int)
     parser.add_argument("--num_workers", default=8, type=int)
     # runner
-    parser.add_argument("--lr", default=3e-4, type=float)
-    parser.add_argument("--weight_decay", default=1e-4, type=float)
-    parser.add_argument("--T_0", default=5, type=int)
+    parser.add_argument("--lr", default=0.0001, type=float)
+    parser.add_argument("--weight_decay", default=0.0001, type=float)
+    parser.add_argument("--T_0", default=16, type=int)
     parser.add_argument("--max_epochs", default=100, type=int)
     parser.add_argument("--gpus", default=0, type=int)
     parser.add_argument("--distributed_backend", default="dp", type=str)
     parser.add_argument("--deterministic", default=True, type=str2bool)
     parser.add_argument("--benchmark", default=False, type=str2bool)
-    parser.add_argument("--reproduce", default=False, action="store_true")
+    parser.add_argument("--reproduce", default=True, type=str2bool)
 
     args = parser.parse_args()
     main(args)

@@ -177,26 +177,46 @@ def _control_preprocess(ctrl_changes):
             sustains[-1].end = ctrl.time
     return sustains
 
-
+# replace _note_preprocess for generative midi
 def _note_preprocess(susteins, notes):
     note_stream = []
-
-    for sustain in susteins:
-        for note_idx, note in enumerate(notes):
-            if note.start < sustain.start:
-                note_stream.append(note)
-            elif note.start > sustain.end:
-                notes = notes[note_idx:]
-                sustain.transposition_notes()
-                break
-            else:
-                sustain.add_managed_note(note)
-
-    for sustain in susteins:
-        note_stream += sustain.managed_notes
-
+    if susteins:
+        for sustain in susteins:
+            for note_idx, note in enumerate(notes):
+                if note.start < sustain.start:
+                    note_stream.append(note)
+                elif note.start > sustain.end:
+                    notes = notes[note_idx:]
+                    sustain.transposition_notes()
+                    break
+                else:
+                    sustain.add_managed_note(note)
+        for sustain in susteins:
+            note_stream += sustain.managed_notes
+    else:
+        note_stream = notes
     note_stream.sort(key= lambda x: x.start)
     return note_stream
+    
+# def _note_preprocess(susteins, notes):
+#     note_stream = []
+
+#     for sustain in susteins:
+#         for note_idx, note in enumerate(notes):
+#             if note.start < sustain.start:
+#                 note_stream.append(note)
+#             elif note.start > sustain.end:
+#                 notes = notes[note_idx:]
+#                 sustain.transposition_notes()
+#                 break
+#             else:
+#                 sustain.add_managed_note(note)
+
+#     for sustain in susteins:
+#         note_stream += sustain.managed_notes
+
+#     note_stream.sort(key= lambda x: x.start)
+#     return note_stream
 
 
 def encode_midi(file_path):

@@ -29,9 +29,9 @@ def main(args) -> None:
     if args.cuda:
         print('GPU name: ', torch.cuda.get_device_name(device=args.cuda))
 
-    if args.types == "AV":
+    if args.task == "ar_va":
         labels= ["Q1","Q2","Q3","Q4"]
-        checkpoint_path = "./midi_cls/exp/EMOPIA/ar_va/magenta/batch:16.0-h:128-emd:300-wd:0.0001-attn:16.0-T_0:25-lr:0.001/Best-epoch=06-val_loss=1.0005-val_acc=0.6186.ckpt"
+        checkpoint_path = "./best_weight/midi/ar_va/best.ckpt"
         model = SAN( num_of_dim= 4, vocab_size= 389, lstm_hidden_dim= 128, embedding_size= 300, r=16)
         state_dict = torch.load(checkpoint_path, map_location=torch.device(args.cuda))
         new_state_map = {model_key: model_key.split("model.")[1] for model_key in state_dict.get("state_dict").keys()}
@@ -40,11 +40,27 @@ def main(args) -> None:
         model.eval()
         quantize_midi = magenta_extractor(args.midi_path)
 
-    elif args.types == "Arousal":
+    elif args.task == "arousal":
         labels= ["HA","LA"]
+        checkpoint_path = "./best_weight/midi/arousal/best.ckpt"
+        model = SAN( num_of_dim= 2, vocab_size= 389, lstm_hidden_dim= 128, embedding_size= 300, r=16)
+        state_dict = torch.load(checkpoint_path, map_location=torch.device(args.cuda))
+        new_state_map = {model_key: model_key.split("model.")[1] for model_key in state_dict.get("state_dict").keys()}
+        new_state_dict = {new_state_map[key]: value for (key, value) in state_dict.get("state_dict").items() if key in new_state_map.keys()}
+        model.load_state_dict(new_state_dict)
+        model.eval()
+        quantize_midi = magenta_extractor(args.midi_path)
 
-    elif args.types == "Valence":
+    elif args.task == "valence":
         labels= ["HV","LV"]
+        checkpoint_path = "./best_weight/midi/valence/best.ckpt"
+        model = SAN( num_of_dim= 2, vocab_size= 389, lstm_hidden_dim= 128, embedding_size= 300, r=8)
+        state_dict = torch.load(checkpoint_path, map_location=torch.device(args.cuda))
+        new_state_map = {model_key: model_key.split("model.")[1] for model_key in state_dict.get("state_dict").keys()}
+        new_state_dict = {new_state_map[key]: value for (key, value) in state_dict.get("state_dict").items() if key in new_state_map.keys()}
+        model.load_state_dict(new_state_dict)
+        model.eval()
+        quantize_midi = magenta_extractor(args.midi_path)
         
     model = model.to(args.cuda)
     torch_midi = torch.LongTensor(quantize_midi).unsqueeze(0)
@@ -56,9 +72,8 @@ def main(args) -> None:
 if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("--types", default="midi", type=str, choices=["midi, audio"])
-    parser.add_argument("--task", default="ar_va", type=str, choices=["ar_va"])
-    # parser.add_argument("--types", default="AV", type=str, choices=["AV","Arousal","Valence"])
-    parser.add_argument("--midi_path", default="./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mid", type=str)
+    parser.add_argument("--task", default="ar_va", type=str, choices=["ar_va", "arousal", "valence"])
+    parser.add_argument("--midi_path", default="./dataset/sample_data/example_generative.mid", type=str)
     parser.add_argument('--cuda', default='cuda:0', type=str)
     args = parser.parse_args()
     main(args)

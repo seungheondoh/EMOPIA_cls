@@ -45,8 +45,8 @@ def midi_feature_extract():
     event_to_int = midi_dictionary[0]
 
     midi_path = "../dataset/PEmoDataset/midis"
-    remi_path = "./dataset/remi_midi_temp"
-    magenta_path = "./dataset/magenta_midi_temp"
+    remi_path = "./dataset/remi_midi_test"
+    magenta_path = "./dataset/magenta_midi_test"
 
     for midi in os.listdir(midi_path):
         remi_fn = os.path.join(remi_path, midi).replace(".mid",".pt")

@@ -1,4 +1,3 @@
 labels: ["HV","LV"]
 cls_type: "V"
-feature_path: "../dataset/resample_wav"
 n_class: 2

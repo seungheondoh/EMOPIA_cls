@@ -26,25 +26,28 @@ For the generation models and codes, please refer to [this repo](https://github.
 ## Usage
 
 ### Inference
+download model weight in [Here](https://drive.google.com/file/d/1AHQ2HW-ZYisqMbdlIEJSlEbMxqbZhOBg/view?usp=sharing)
+
 1. MIDI domain inference
 
         python inference.py --types midi --task ar_va --midi_path {your_midi} --cuda {cuda}
+        python inference.py --types midi --task arousal --midi_path {your_midi} --cuda {cuda}
+        python inference.py --types midi --task valence --midi_path {your_midi} --cuda {cuda}
 
 2. Audio domain inference
 
         python inference.py --types audio --task ar_va --midi_path {your_midi} --cuda {cuda}
+        python inference.py --types audio --task arousal --midi_path {your_midi} --cuda {cuda}
+        python inference.py --types audio --task valence --midi_path {your_midi} --cuda {cuda}
 
 ### Training from scratch
 1. Download the data files from [HERE]().
     
 2. Preprocessing
+    a. audio: resampling to 22050
+    b. midi: magenta feature extraction, remi feature extraction
 
         python preprocessing.py
-    a. audio
-        - resampling to 22050
-    b. midi
-        - magenta feature extraction
-        - remi feature extraction
 
 3. training options:  
 
