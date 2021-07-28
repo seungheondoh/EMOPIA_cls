@@ -6,7 +6,8 @@ This is the official repository of **EMOPIA: A Multi-Modal Pop Piano Dataset For
 - [Dataset at Zenodo (Coming soon)]()
 
 **News!**
-- `2021-07-21` Upload all pretrained weight,[Weight](https://drive.google.com/file/d/1AHQ2HW-ZYisqMbdlIEJSlEbMxqbZhOBg/view?usp=sharing)
+
+`2021-07-21` Upload all pretrained [weight](https://drive.google.com/file/d/1L_NOVKCElwcYUEAKp1-FZj_G6Hcq2g2c/view?usp=sharing)
 
 # Conditional Generation
 For the generation models and codes, please refer to [this repo](https://github.com/annahung31/EMOPIA).
@@ -30,7 +31,7 @@ For the generation models and codes, please refer to [this repo](https://github.
 ## Usage
 
 ### Inference
-download model weight in [Here](https://drive.google.com/file/d/1AHQ2HW-ZYisqMbdlIEJSlEbMxqbZhOBg/view?usp=sharing)
+download model weight in [Here](https://drive.google.com/file/d/1L_NOVKCElwcYUEAKp1-FZj_G6Hcq2g2c/view?usp=sharing), unzip in root dir.
 
 1. MIDI domain inference
 
@@ -62,7 +63,9 @@ Inference values:  [-1.3685153 -1.3001229  2.2495744 -0.873877 ]
 1. Download the data files from [HERE]().
     
 2. Preprocessing
+
     a. audio: resampling to 22050
+
     b. midi: magenta feature extraction, remi feature extraction
 
         python preprocessing.py
@@ -87,13 +90,13 @@ Inference values:  [-1.3685153 -1.3001229  2.2495744 -0.873877 ]
 
 ## Results
 
-<figure><img src="figs/results.png" width="550">
+<figure><img src="figs/results.png">
 
+you can check ML performance in [notebook](https://github.com/Dohppak/EMOPIA_cls/blob/main/notebook/1.ML%20Classifier.ipynb)
 
 ## Authors
 
 The paper is a co-working project with [Anna](https://github.com/annahung31), [Joann](https://github.com/joann8512) and Nabin. This repository is mentained by me.
-
 
 ## License
 The EMOPIA dataset is released under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0). It is provided primarily for research purposes and is prohibited to be used for commercial purposes. When sharing your result based on EMOPIA, any act that defames the original music owner is strictly prohibited.
