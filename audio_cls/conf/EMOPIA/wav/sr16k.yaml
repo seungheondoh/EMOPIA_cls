@@ -1,0 +1,3 @@
+feature_path: "../dataset/resample16000"
+input_length: 3
+sr: 16000

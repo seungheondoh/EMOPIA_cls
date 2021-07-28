@@ -17,10 +17,11 @@ dataset/remi_midi_test/
 dataset/resample22050/
 best_weight/
 
-midi_cls/midi_helper/remi/corpus
-midi_cls/midi_helper/remi/scratch_remi/
-midi_cls/midi_helper/remi/scratch_remi/
-
+midi_cls/midi_helper/remi/src/corpus
+midi_cls/midi_helper/remi/src/from-scratch_remi/
+midi_cls/midi_helper/remi/src/midi_analyzed/
+midi_cls/midi_helper/remi/src/midi_synchronized/
+midi_cls/midi_helper/remi_/
 # PyTorch ckpt
 *.tar
 *.bin

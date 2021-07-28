@@ -5,6 +5,9 @@ This is the official repository of **EMOPIA: A Multi-Modal Pop Piano Dataset For
 - [Demo Page](https://annahung31.github.io/EMOPIA/)
 - [Dataset at Zenodo (Coming soon)]()
 
+**News!**
+- `2021-07-21` Upload all pretrained weight,[Weight](https://drive.google.com/file/d/1AHQ2HW-ZYisqMbdlIEJSlEbMxqbZhOBg/view?usp=sharing)
+
 # Conditional Generation
 For the generation models and codes, please refer to [this repo](https://github.com/annahung31/EMOPIA).
 
@@ -19,9 +22,10 @@ For the generation models and codes, please refer to [this repo](https://github.
 2. Other requirements:
     - pip install -r requirements.txt
 
-3. MIDI processor
+3. git clone MIDI processor (already done)
     - [MIDI-like(magenta)](https://github.com/jason9693/midi-neural-processor)
     - [REMI](https://github.com/YatingMusic/compound-word-transformer/blob/main/dataset/Dataset.md)
+    - If you want to bulid new REMI corpus, vocab from other dataset, plz check official repo of compund-word-transfomer and `EMOPIA_cls/midi_cls/midi_helper/remi/src`
 
 ## Usage
 
@@ -30,15 +34,29 @@ download model weight in [Here](https://drive.google.com/file/d/1AHQ2HW-ZYisqMbd
 
 1. MIDI domain inference
 
-        python inference.py --types midi --task ar_va --midi_path {your_midi} --cuda {cuda}
-        python inference.py --types midi --task arousal --midi_path {your_midi} --cuda {cuda}
-        python inference.py --types midi --task valence --midi_path {your_midi} --cuda {cuda}
+        python inference.py --types {midi_like or remi} --task ar_va --file_path {your_midi} --cuda {cuda}
+        python inference.py --types {midi_like or remi} --task arousal --file_path {your_midi} --cuda {cuda}
+        python inference.py --types {midi_like or remi} --task valence --file_path {your_midi} --cuda {cuda}
 
 2. Audio domain inference
 
-        python inference.py --types audio --task ar_va --midi_path {your_midi} --cuda {cuda}
-        python inference.py --types audio --task arousal --midi_path {your_midi} --cuda {cuda}
-        python inference.py --types audio --task valence --midi_path {your_midi} --cuda {cuda}
+        python inference.py --types wav --task ar_va --file_path {your_mp3} --cuda {cuda}
+        python inference.py --types wav --task arousal --file_path {your_mp3} --cuda {cuda}
+        python inference.py --types wav --task valence --file_path {your_mp3} --cuda {cuda}
+
+### Inference results
+
+```
+python inference.py --types wav --task ar_va --file_path ./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mp3
+
+./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mp3  is emotion Q3
+Inference values:  [0.33273646 0.17223473 0.63210356 0.07314324]
+
+python inference.py --types midi_like --task ar_va --file_path ./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mid
+
+./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mid  is emotion Q3
+Inference values:  [-1.3685153 -1.3001229  2.2495744 -0.873877 ]
+```
 
 ### Training from scratch
 1. Download the data files from [HERE]().
@@ -68,6 +86,8 @@ download model weight in [Here](https://drive.google.com/file/d/1AHQ2HW-ZYisqMbd
 
 
 ## Results
+
+<figure><img src="figs/results.png" width="550">
 
 
 ## Authors
