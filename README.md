@@ -1,18 +1,21 @@
 # EMOPIA_cls
 
-This is the official repository of **EMOPIA: A Multi-Modal Pop Piano Dataset For Emotion Recognition and Emotion-based Music Generation**. The paper has been accepted by International Society for Music Information Retrieval Conference 2021. 
+This is the official repository of **EMOPIA: A Multi-Modal Pop Piano Dataset For Emotion Recognition and Emotion-based Music Generation**. The paper has been accepted by International Society for Music Information Retrieval Conference 2021. This repository is the **Emotion Recognition** part (Audio and MIDI domain).
 
 - [Demo Page](https://annahung31.github.io/EMOPIA/)
-- [Dataset at Zenodo (Coming soon)]()
+- [Dataset at Zenodo](https://zenodo.org/record/5090631#.YQEZZ1Mzaw5)
+- [Conditional Generation Repo](https://github.com/annahung31/EMOPIA).
+
 
 **News!**
 
-`2021-07-21` Upload all pretrained [weight](https://drive.google.com/file/d/1L_NOVKCElwcYUEAKp1-FZj_G6Hcq2g2c/view?usp=sharing)
+`2021-07-21` update [dataset](https://zenodo.org/record/5090631#.YQEZZ1Mzaw5)
 
-# Conditional Generation
-For the generation models and codes, please refer to [this repo](https://github.com/annahung31/EMOPIA).
+`2021-07-20` Upload all pretrained [weight](https://drive.google.com/file/d/1L_NOVKCElwcYUEAKp1-FZj_G6Hcq2g2c/view?usp=sharing)
 
-# Emotion Classification
+<figure><img src="figs/results.png">
+
+you can check ML performance in [notebook](https://github.com/Dohppak/EMOPIA_cls/blob/main/notebook/1.ML%20Classifier.ipynb)
 
 ## Environment
 
@@ -86,13 +89,6 @@ Inference values:  [-1.3685153 -1.3001229  2.2495744 -0.873877 ]
         python train_test.py --wav sr22k --task ar_va --n_channels 128 --n_fft 1024 --n_mels 128
         python train_test.py --wav sr22k --task arousal --n_channels 128 --n_fft 1024 --n_mels 128
         python train_test.py --wav sr22k --task valence --n_channels 128 --n_fft 1024 --n_mels 128
-
-
-## Results
-
-<figure><img src="figs/results.png">
-
-you can check ML performance in [notebook](https://github.com/Dohppak/EMOPIA_cls/blob/main/notebook/1.ML%20Classifier.ipynb)
 
 ## Authors
 
