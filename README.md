@@ -34,7 +34,7 @@ you can check ML performance in [notebook](https://github.com/Dohppak/EMOPIA_cls
 ## Usage
 
 ### Inference
-download model weight in [Here](https://drive.google.com/file/d/1L_NOVKCElwcYUEAKp1-FZj_G6Hcq2g2c/view?usp=sharing), unzip in root dir.
+download model weight in [Here](https://drive.google.com/file/d/1L_NOVKCElwcYUEAKp1-FZj_G6Hcq2g2c/view?usp=sharing), unzip in project dir.
 
 1. MIDI domain inference
 
@@ -50,17 +50,17 @@ download model weight in [Here](https://drive.google.com/file/d/1L_NOVKCElwcYUEA
 
 ### Inference results
 
-```
-python inference.py --types wav --task ar_va --file_path ./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mp3
+        ```
+        python inference.py --types wav --task ar_va --file_path ./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mp3
 
-./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mp3  is emotion Q3
-Inference values:  [0.33273646 0.17223473 0.63210356 0.07314324]
+        ./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mp3  is emotion Q3
+        Inference values:  [0.33273646 0.17223473 0.63210356 0.07314324]
 
-python inference.py --types midi_like --task ar_va --file_path ./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mid
+        python inference.py --types midi_like --task ar_va --file_path ./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mid
 
-./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mid  is emotion Q3
-Inference values:  [-1.3685153 -1.3001229  2.2495744 -0.873877 ]
-```
+        ./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mid  is emotion Q3
+        Inference values:  [-1.3685153 -1.3001229  2.2495744 -0.873877 ]
+        ```
 
 ### Training from scratch
 1. Download the data files from [HERE]().
@@ -78,17 +78,17 @@ Inference values:  [-1.3685153 -1.3001229  2.2495744 -0.873877 ]
     a. MIDI domain classification
 
         cd midi_cls
-        python train_test.py --midi magenta --task ar_va --embedding_size 300 --r 16 --lstm_hidden_dim 128
-        python train_test.py --midi magenta --task arousal --embedding_size 300 --r 16 --lstm_hidden_dim 128
-        python train_test.py --midi magenta --task valence --embedding_size 300 --r 16 --lstm_hidden_dim 128
+        python train_test.py --midi magenta --task ar_va
+        python train_test.py --midi magenta --task arousal
+        python train_test.py --midi magenta --task valence
 
 
     b. Wav domain clasfficiation
 
         cd audio_cls
-        python train_test.py --wav sr22k --task ar_va --n_channels 128 --n_fft 1024 --n_mels 128
-        python train_test.py --wav sr22k --task arousal --n_channels 128 --n_fft 1024 --n_mels 128
-        python train_test.py --wav sr22k --task valence --n_channels 128 --n_fft 1024 --n_mels 128
+        python train_test.py --wav sr22k --task ar_va
+        python train_test.py --wav sr22k --task arousal
+        python train_test.py --wav sr22k --task valence
 
 ## Authors
 
