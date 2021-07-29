@@ -50,7 +50,6 @@ download model weight in [Here](https://drive.google.com/file/d/1L_NOVKCElwcYUEA
 
 ### Inference results
 
-        ```
         python inference.py --types wav --task ar_va --file_path ./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mp3
 
         ./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mp3  is emotion Q3
@@ -60,7 +59,6 @@ download model weight in [Here](https://drive.google.com/file/d/1L_NOVKCElwcYUEA
 
         ./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mid  is emotion Q3
         Inference values:  [-1.3685153 -1.3001229  2.2495744 -0.873877 ]
-        ```
 
 ### Training from scratch
 1. Download the data files from [HERE]().
@@ -78,9 +76,9 @@ download model weight in [Here](https://drive.google.com/file/d/1L_NOVKCElwcYUEA
     a. MIDI domain classification
 
         cd midi_cls
-        python train_test.py --midi magenta --task ar_va
-        python train_test.py --midi magenta --task arousal
-        python train_test.py --midi magenta --task valence
+        python train_test.py --midi {midi_like or remi} --task ar_va
+        python train_test.py --midi {midi_like or remi} --task arousal
+        python train_test.py --midi {midi_like or remi} --task valence
 
 
     b. Wav domain clasfficiation
