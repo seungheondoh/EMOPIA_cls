@@ -30,13 +30,25 @@ def remi_extractor(midi_path, event_to_int):
     midi_obj = analyzer(midi_path)
     song_data = corpus(midi_obj)
     event_sequence = event(song_data)
-    quantize_midi = [event_to_int[str(i['name'])+"_"+str(i['value'])] for i in event_sequence]
+    
+    quantize_midi = []
+    for i in event_sequence:
+        try:
+            quantize_midi.append(event_to_int[str(i['name'])+"_"+str(i['value'])])
+        except KeyError:
+            
+            if 'Velocity' in str(i['name']):
+                quantize_midi.append(event_to_int[str(i['name'])+"_"+str(i['value']-2)])
+            else:
+                #skip the unknown event
+                continue
+    
     return quantize_midi
 
 def magenta_extractor(midi_path):
     return encode_midi(midi_path)
 
-def main(args) -> None:
+def predict(args) -> None:
     device = args.cuda if args.cuda and torch.cuda.is_available() else 'cpu'
     if args.cuda:
         print('GPU name: ', torch.cuda.get_device_name(device=args.cuda))
@@ -91,9 +103,13 @@ def main(args) -> None:
         prediction = model(audio_sample.to(args.cuda))
         prediction = prediction.mean(0,False)
     
+    pred_label = label_list[prediction.squeeze(0).max(0)[1].detach().cpu().numpy()]
+    pred_value = prediction.squeeze(0).detach().cpu().numpy()
     print("========")
-    print(args.file_path, " is emotion", label_list[prediction.squeeze(0).max(0)[1].detach().cpu().numpy()])
-    print("Inference values: ",prediction.squeeze(0).detach().cpu().numpy())
+    print(args.file_path, " is emotion", pred_label)
+    print("Inference values: ", pred_value)
+
+    return pred_label, pred_value
 
 if __name__ == "__main__":
     parser = ArgumentParser()
@@ -102,4 +118,4 @@ if __name__ == "__main__":
     parser.add_argument("--file_path", default="./dataset/sample_data/Sakamoto_MerryChristmasMr_Lawrence.mid", type=str)
     parser.add_argument('--cuda', default='cuda:0', type=str)
     args = parser.parse_args()
-    main(args)
+    _, _ = predict(args)
