@@ -8,7 +8,8 @@ This is the official repository of **EMOPIA: A Multi-Modal Pop Piano Dataset For
 
 
 **News!**
-`2021-10-29` update [matlab feature](https://drive.google.com/file/d/1lG3KMYhRZsBr3ILqcES2aVY21xhvCr7i/view?usp=sharing)
+
+`2021-10-29` update [matlab feature](https://drive.google.com/file/d/1lG3KMYhRZsBr3ILqcES2aVY21xhvCr7i/view?usp=sharing) (key, tempo, note density)
 
 `2021-07-21` update [dataset](https://zenodo.org/record/5090631#.YQEZZ1Mzaw5)
 
