@@ -8,6 +8,7 @@ This is the official repository of **EMOPIA: A Multi-Modal Pop Piano Dataset For
 
 
 **News!**
+`2021-10-29` update [matlab feature](https://drive.google.com/file/d/1lG3KMYhRZsBr3ILqcES2aVY21xhvCr7i/view?usp=sharing)
 
 `2021-07-21` update [dataset](https://zenodo.org/record/5090631#.YQEZZ1Mzaw5)
 
@@ -61,7 +62,7 @@ download model weight in [Here](https://drive.google.com/file/d/1L_NOVKCElwcYUEA
         Inference values:  [-1.3685153 -1.3001229  2.2495744 -0.873877 ]
 
 ### Training from scratch
-1. Download the data files from [HERE]().
+1. Download the data files from [HERE](https://zenodo.org/record/5090631#.YQEZZ1Mzaw5).
     
 2. Preprocessing
 
